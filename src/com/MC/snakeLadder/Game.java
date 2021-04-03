@@ -34,7 +34,7 @@ public class Game {
             int currentStateOfPlayer = playerState[player];
 
             String printValue;
-            if ((dieValue + currentStateOfPlayer) <= 100) {
+            if ((dieValue + currentStateOfPlayer) <= noOfCells) {
                 playerState[player] = changeState(currentStateOfPlayer, dieValue, board);
                 printValue = String.format("%s rolled a %d and moved from %d to %d", players[player],
                     dieValue, currentStateOfPlayer, playerState[player]);

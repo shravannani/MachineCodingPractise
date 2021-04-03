@@ -49,7 +49,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Main main = new Main(100, 2);
+        Main main = new Main(1000, 2);
         readInputForSnakeLadder(true);
         readInputForSnakeLadder(false);
         readInputForPlayers();
