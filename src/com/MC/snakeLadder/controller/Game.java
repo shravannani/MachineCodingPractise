@@ -1,4 +1,4 @@
-package com.MC.snakeLadder;
+package com.MC.snakeLadder.controller;
 
 public class Game {
     int noOfPlayers;

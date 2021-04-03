@@ -1,13 +1,13 @@
-package com.MC;
+package com.MC.snakeLadder.helper;
 
 import com.MC.snakeLadder.models.PlayersModel;
 
 import java.util.Scanner;
 
-public class Helpers {
+public class InputHelper {
     Scanner scanner;
 
-    public Helpers(){
+    public InputHelper(){
         this.scanner = new Scanner(System.in);
     }
 
