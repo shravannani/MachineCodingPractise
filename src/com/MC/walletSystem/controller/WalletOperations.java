@@ -14,6 +14,10 @@ import java.util.TreeMap;
 
 public class WalletOperations {
 
+    // these 2 can change dynamically
+    int topKValue = 3;
+    List<Integer> offer2List = List.of(10, 5, 2);
+    
     AccountHolders accountHolders;
     TreeMap<Integer, List<String>> topTransactions = new TreeMap<>();
 
@@ -69,10 +73,6 @@ public class WalletOperations {
         accountHolderDetails.get().getWallet().displayTransactions();
     }
 
-//    public void displayBalance(AccountHolder accountHolder){
-//        System.out.println(accountHolder.getName() + " " + accountHolder.getWallet().getBalance());
-//    }
-
     public void overView() {
         for (AccountHolder accountHolder : accountHolders.getAccountHolders()) {
             accountHolder.displayBalance();
@@ -92,20 +92,19 @@ public class WalletOperations {
             }
         }
 
-        processTop3();
+        processTopk();
     }
 
-    public void processTop3() {
-        List<Integer> offer2List = List.of(10, 5, 2);
+    public void processTopk() {
         NavigableSet<Integer> keys = topTransactions.descendingKeySet();
         List<String> topNames = new ArrayList<>();
 
         for (int key : keys) {
-            if (topNames.size() == 3) {
+            if (topNames.size() == topKValue) {
                 break;
             }
 
-            int remaining = 3 - topNames.size();
+            int remaining = topKValue - topNames.size();
 
             List<String> values = topTransactions.get(key);
             Collections.sort(values);
@@ -118,7 +117,7 @@ public class WalletOperations {
             }
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < topKValue; i++) {
             Optional<AccountHolder> accountHolder = findAccountHolderDataByName(topNames.get(i));
             updateBalance(offer2List.get(i), "Offer2", accountHolder.get());
         }
